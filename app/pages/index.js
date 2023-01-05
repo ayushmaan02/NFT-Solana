@@ -1,12 +1,13 @@
 import React from "react";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { useWallet } from "@solana/wallet-adapter-react";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 // Constants
 const TWITTER_HANDLE = "ayushmaan_2823";
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 
 const Home = () => {
+    const wallet = useWallet();
     //Actions 
     const renderNotConnectedConainre = ()=> (
         <div>
@@ -21,9 +22,9 @@ const Home = () => {
         <div className="App">
             <div className="container">
                 <div className="header-container">
-                    <p className="header">🍭 Candy Drop</p>
+                    <p className="header">⚡ Thunder Drop</p>
                     <p className="sub-text">NFT drop machine with fair mint</p>
-                    {renderNotConnectedConainre()}
+                    {wallet.publicKey ? "Hiee Public Key Available" : renderNotConnectedConainre()}
                 </div>
                 <div className="footer-container">
                     <img alt="Twitter Logo" className="twitter-logo" src="twitter-logo.svg"/>
