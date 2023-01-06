@@ -15,21 +15,6 @@ const App = ({ Component, pageProps }) => {
     const endpoint = useMemo(() => clusterApiUrl(network), [network]);
     const wallets = useMemo(() => [new PhantomWalletAdapter()], [network]);
 
-    const checkIfWalletIsConnectd = async () => {
-        if(!wallets) {
-            console.log("Phantom Wallet not Found!");
-            return;
-        }
-        else
-        {
-            console.log("Phantom wallet Found");
-        }
-    }
-
-    useEffect(()=> {
-        checkIfWalletIsConnectd();
-    },[])
-
     return (
         <ConnectionProvider endpoint={endpoint}>
             <WalletProvider wallets={wallets} autoConnect>
