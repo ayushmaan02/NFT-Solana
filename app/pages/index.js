@@ -1,4 +1,5 @@
 import React from "react";
+import CandyMachine from "../components/CandyMachine";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
@@ -24,7 +25,7 @@ const Home = () => {
                 <div className="header-container">
                     <p className="header">⚡ Thunder Drop</p>
                     <p className="sub-text">NFT drop machine with fair mint</p>
-                    {wallet.publicKey ? "Hiee Public Key Available" : renderNotConnectedConainre()}
+                    {wallet.publicKey ? <CandyMachine walletAddress={wallet}/> : renderNotConnectedConainre()}
                 </div>
                 <div className="footer-container">
                     <img alt="Twitter Logo" className="twitter-logo" src="twitter-logo.svg"/>
