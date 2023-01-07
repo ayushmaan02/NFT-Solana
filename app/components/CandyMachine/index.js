@@ -3,6 +3,7 @@ import { Connection, PublicKey } from "@solana/web3.js";
 import { Program, AnchorProvider, web3 } from "@project-serum/anchor";
 import { MintLayout, TOKEN_PROGRAM_ID, Token } from "@solana/spl-token";
 import { sendTransactions } from "./connection";
+import CountdownTimer from "../../CountdownTimer";
 // import "./CandyMachine.css";
 import {
     candyMachineProgram,
@@ -323,10 +324,21 @@ const CandyMachine = ({ walletAddress }) => {
         });
   };
 
+  const renderDropTimer = () => {
+    const currentDate = new Date();
+    const dropDate = new Date(candyMachine.state.goLiveData * 1000);
+    if(currentDate < dropDate){
+        console.log("You are wa to early fren!");
+        return <CountdownTimer dropDate={dropDate}/>;
+    }
+
+    return <p>{`Drop Date : ${candyMachine.state.goLiveDateTimeString}`}</p>;
+  };
+
     return (
         candyMachine && (
           <div className="machine-container">
-            <p>{`Drop Date: ${candyMachine.state.goLiveDateTimeString}`}</p>
+            {renderDropTimer()}
             <p>{`Items Minted: ${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`}</p>
             <button className="cta-button mint-button" onClick={mintToken}>
                 Mint NFT
