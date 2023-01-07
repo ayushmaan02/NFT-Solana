@@ -332,17 +332,26 @@ const CandyMachine = ({ walletAddress }) => {
         return <CountdownTimer dropDate={dropDate}/>;
     }
 
-    return <p>{`Drop Date : ${candyMachine.state.goLiveDateTimeString}`}</p>;
+    return (
+    <p>{`Drop Date : ${candyMachine.state.goLiveDateTimeString}`}</p>,
+    <p>{`Items Minted: ${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`}</p>
+    );
   };
 
     return (
-        candyMachine && (
+        candyMachine && candyMachine.state && (
           <div className="machine-container">
             {renderDropTimer()}
-            <p>{`Items Minted: ${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`}</p>
-            <button className="cta-button mint-button" onClick={mintToken}>
-                Mint NFT
-            </button>
+            {candyMachine.state.itemsRedeemed === candyMachine.state.itemsAvailable ? (
+                <p className="sub-text"> Sold Out 🙈</p>
+            ) : (
+                <button 
+                className="cta-button mint-button"
+                onClick={mintToken}
+                >
+                  Mint NFT
+                </button>
+            )}
           </div>
         )
       );
