@@ -4,7 +4,6 @@ import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-wallets";
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
-import { Analytics } from '@vercel/analytics/react';
 
 import "../styles/App.css";
 import "../styles/globals.css";
@@ -22,7 +21,6 @@ const App = ({ Component, pageProps }) => {
             <WalletProvider wallets={wallets} autoConnect>
                 <WalletModalProvider>
                     <Component {...pageProps} />
-                    <Analytics/>
                 </WalletModalProvider>
             </WalletProvider>
         </ConnectionProvider>
