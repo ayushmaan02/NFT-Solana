@@ -23,8 +23,8 @@ const Home = () => {
         <div className="App">
             <div className="container">
                 <div className="header-container">
-                    <p className="header">⚡ Thunder Drop</p>
-                    <p className="sub-text">NFT drop machine with fair mint</p>
+                    <p className="header">⚡Thunder Drop⚡</p>
+                    <p className="sub-text">Droping the most awaited Pika Soon!!!</p>
                     {wallet.publicKey ? <CandyMachine walletAddress={wallet}/> : renderNotConnectedConainre()}
                 </div>
                 <div className="footer-container">
