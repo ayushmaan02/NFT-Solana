@@ -332,10 +332,11 @@ const CandyMachine = ({ walletAddress }) => {
         return <CountdownTimer dropDate={dropDate}/>;
     }
 
-    return (
-    <p>{`Drop Date : ${candyMachine.state.goLiveDateTimeString}`}</p>,
+    return <>
+    <p>{`Drop Date : ${candyMachine.state.goLiveDateTimeString}`}</p>
     <p>{`Items Minted: ${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`}</p>
-    );
+    </>
+
   };
 
     return (
